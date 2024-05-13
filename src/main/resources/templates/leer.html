@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Datos Personales</title>
+</head>
+<body>
+    <h2>Datos Personales</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Tipo de Identificación</th>
+                <th>Identificación</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Edad</th>
+                <th>Fecha Creación</th>
+                <th>Fecha Modificación</th>
+                <th>Es Activo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="dato : ${datos}">
+                <td th:text="${dato.tipoIdentificacion}"></td>
+                <td th:text="${dato.identificacion}"></td>
+                <td th:text="${dato.nombres}"></td>
+                <td th:text="${dato.apellidos}"></td>
+                <td th:text="${dato.edad}"></td>
+                <td th:text="${dato.fechaCreacion}"></td>
+                <td th:text="${dato.esActivo}"></td>
+                <td>
+                    <a th:href="@{/editar/{identificacion}(identificacion=${dato.identificacion})}">Editar</a>
+                    <a th:href="@{/eliminar/{identificacion}(identificacion=${dato.identificacion})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Datos Personales</title>
+</head>
+<body>
+    <h2>Actualizar Datos Personales</h2>
+    <form action="#" th:action="@{/actualizar/{identificacion}(identificacion=${datosPersonales.identificacion})}" th:object="${datosPersonales}" method="post">
+        Tipo de Identificación: <input type="text" th:field="*{tipoIdentificacion}" /><br/>
+        Identificación: <input type="text" th:field="*{identificacion}" disabled /><br/>
+        Nombres: <input type="text" th:field="*{nombres}" /><br/>
+        Apellidos: <input type="text" th:field="*{apellidos}" /><br/>
+        Edad: <input type="number" th:field="*{edad}" /><br/>
+        <input type="submit" value="Guardar Cambios" />
+    </form>
+</body>
+</html>

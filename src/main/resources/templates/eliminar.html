@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Datos Personales</title>
+</head>
+<body>
+    <h2>Eliminar Datos Personales</h2>
+    <form action="#" th:action="@{/eliminar/{identificacion}(identificacion=${datosPersonales.identificacion})}" th:object="${datosPersonales}" method="post">
+        <p>¿Estás seguro de que quieres eliminar estos datos personales?</p>
+        <input type="submit" value="Eliminar" />
+    </form>
+</body>
+</html>
