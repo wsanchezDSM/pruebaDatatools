@@ -18,49 +18,61 @@ public class ThymeleafController {
 	@Autowired
 	private DatosUsuarioService datosPersonalesService;
 
-	@GetMapping("/crear")
+	@GetMapping("/")
+	public String home(Model model) {
+		List<DatosUsuarioDTO> datos = datosPersonalesService.obtenerDatosPlantilla();
+	    model.addAttribute("datos", datos);
+	    return "leer";
+	}
+	
+	@GetMapping("/crear.html")
 	public String mostrarFormularioCrear(Model model) {
 	   model.addAttribute("datosPersonales", new DatosUsuario());
 	   return "crear";
 	}
 
-	@PostMapping("/crear")
+	@PostMapping("/crear.html")
 	public String crearDatosPersonales(@ModelAttribute("datosPersonales") DatosUsuarioDTO datosPersonales) {
 	    datosPersonalesService.guardarDatos(datosPersonales);
 	    return "redirect:/leer";
 	}
 
-	@GetMapping("/leer")
+	@GetMapping("/leer.html")
 	public String listarDatosPersonales(Model model) {
 	    List<DatosUsuarioDTO> datos = datosPersonalesService.obtenerDatosPlantilla();
 	    model.addAttribute("datos", datos);
 	    return "leer";
 	 }
 
-	@GetMapping("/editar/{identificacion}")
+	@GetMapping("/editar.html/{identificacion}")
     public String mostrarFormularioActualizar(@PathVariable("identificacion") String identificacion, Model model) {
         DatosUsuarioDTO datosPersonales = datosPersonalesService.obtenerDatosIdentificacion(identificacion);
         model.addAttribute("datosPersonales", datosPersonales);
         return "actualizar";
     }
 
-    @PostMapping("/actualizar/{identificacion}")
+	@GetMapping("/index.html")
+    public String index() {
+        return "index"; // Esto devuelve la vista index.html
+    }
+	
+    @PostMapping("/actualizar.html/{identificacion}")
     public String actualizarDatosPersonales(@PathVariable("identificacion") String identificacion, @ModelAttribute("datosPersonales") DatosUsuarioDTO datosPersonales) {
         datosPersonalesService.actualizarDatosPlantilla(identificacion, datosPersonales);
-        return "redirect:/leer";
+        return "redirect:/leer.html";
     }
 
-    @GetMapping("/eliminar/{identificacion}")
+    @GetMapping("/eliminar.html/{identificacion}")
     public String mostrarConfirmacionEliminar(@PathVariable("identificacion") String identificacion, Model model) {
         DatosUsuarioDTO datosPersonales = datosPersonalesService.obtenerDatosIdentificacion(identificacion);
         model.addAttribute("datosPersonales", datosPersonales);
         return "eliminar";
     }
 
-    @PostMapping("/eliminar/{identificacion}")
+    @PostMapping("/eliminar.html/{identificacion}")
     public String eliminarDatosPersonales(@PathVariable("identificacion") String identificacion) {
         datosPersonalesService.eliminarDatos(identificacion);
-        return "redirect:/leer";
+        return "redirect:/leer.html";
     }
 
 	

@@ -6,7 +6,7 @@
 </head>
 <body>
     <h2>Actualizar Datos Personales</h2>
-    <form action="#" th:action="@{/actualizar/{identificacion}(identificacion=${datosPersonales.identificacion})}" th:object="${datosPersonales}" method="post">
+    <form action="#" th:action="@{/actualizar.html/{identificacion}(identificacion=${datosPersonales.identificacion})}" th:object="${datosPersonales}" method="post">
         Tipo de Identificación: <input type="text" th:field="*{tipoIdentificacion}" /><br/>
         Identificación: <input type="text" th:field="*{identificacion}" disabled /><br/>
         Nombres: <input type="text" th:field="*{nombres}" /><br/>

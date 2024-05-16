@@ -6,7 +6,7 @@
 </head>
 <body>
     <h2>Eliminar Datos Personales</h2>
-    <form action="#" th:action="@{/eliminar/{identificacion}(identificacion=${datosPersonales.identificacion})}" th:object="${datosPersonales}" method="post">
+    <form action="#" th:action="@{/eliminar.html/{identificacion}(identificacion=${datosPersonales.identificacion})}" th:object="${datosPersonales}" method="post">
         <p>¿Estás seguro de que quieres eliminar estos datos personales?</p>
         <input type="submit" value="Eliminar" />
     </form>

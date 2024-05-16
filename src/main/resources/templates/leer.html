@@ -14,9 +14,6 @@
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Edad</th>
-                <th>Fecha Creación</th>
-                <th>Fecha Modificación</th>
-                <th>Es Activo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -27,11 +24,9 @@
                 <td th:text="${dato.nombres}"></td>
                 <td th:text="${dato.apellidos}"></td>
                 <td th:text="${dato.edad}"></td>
-                <td th:text="${dato.fechaCreacion}"></td>
-                <td th:text="${dato.esActivo}"></td>
                 <td>
-                    <a th:href="@{/editar/{identificacion}(identificacion=${dato.identificacion})}">Editar</a>
-                    <a th:href="@{/eliminar/{identificacion}(identificacion=${dato.identificacion})}">Eliminar</a>
+                    <a th:href="@{/editar.html/{identificacion}(identificacion=${dato.identificacion})}">Editar</a>
+                    <a th:href="@{/eliminar.html/{identificacion}(identificacion=${dato.identificacion})}">Eliminar</a>
                 </td>
             </tr>
         </tbody>
